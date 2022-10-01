@@ -31,9 +31,9 @@ int main(void)
     
     //cin >> str;
 
-    for (vector<int>::size_type i = 0; i < vec1.size(); i++)
+    for (vector<int>::size_type i {0}; i < vec1.size(); i++)
     {
-        if ((i+1) % 8 == 1)
+        if ((i + 1) % 8 == 1)
             cout << "\n";
         cout << vec1[i] << " ";
     }
@@ -43,7 +43,7 @@ int main(void)
 
 std::string my_toupper(std::string str)
 {
-    for (std::string::size_type i = 0; i < str.length(); i++)
+    for (std::string::size_type i {0}; i < str.length(); i++)
     {
         str[i] = toupper(str.at(i));
     } 
