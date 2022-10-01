@@ -14,18 +14,22 @@ int main(void)
 
     cout << "Enter some words:\n";
     cin >> str;
-    while (str.length() != 0)
-    {   
-        // if (str.length() == 0)
-        //     break;
-        // for (string::size_type i = 0, j = 1; i < str.length(); i++)
-        // {
-        //     str[i] = toupper(str.at(i));
-        // }    
-        str = my_toupper(str);
-        vec1.push_back(str);
+    while(!(str.length() == 1 && str[0] == 'q'))
+    {
+        //if (str.length() == 0)
+        if (str.empty())
+            break;
+        else
+        {
+            str = my_toupper(str);
+            vec1.push_back(str);
+        }    
         cin >> str;
+        if (str.empty() || str.length() == 0)
+            break;
     }
+    
+    //cin >> str;
 
     for (vector<int>::size_type i = 0; i < vec1.size(); i++)
     {
@@ -39,7 +43,7 @@ int main(void)
 
 std::string my_toupper(std::string str)
 {
-    for (std::string::size_type i = 0, j = 1; i < str.length(); i++)
+    for (std::string::size_type i = 0; i < str.length(); i++)
     {
         str[i] = toupper(str.at(i));
     } 
