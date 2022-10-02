@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-bool is_array_equal(const int arrA[], const int arrB[]);
+bool is_array_equal(const int arrA[], size_t n1, const int arrB[], size_t n2);
 int main(void)
 {
     using namespace std;
@@ -21,6 +21,7 @@ int main(void)
     vector<int> vec1, vec2;
     bool isEqual {true};
     size_t i, idx;
+    size_t lenA, lenB;
     if (sizeof(arrA) == sizeof(arrB))
     {
         for (i = 0, idx = 0; i < sizeof(arrA) / sizeof(arrA[0]); i++, idx++)
@@ -48,17 +49,21 @@ int main(void)
     else
         cout << "arrA not equal to arrB!\n";
 
-    if (is_array_equal(arrA, arrB))
+    lenA = sizeof(arrA) / sizeof(arrA[0]);
+    lenB = sizeof(arrB) / sizeof(arrB[0]);
+    if (is_array_equal(arrA, lenA, arrB, lenB))
         cout << "arrA equal to arrB!\n";
     else
         cout << "arrA not equal to arrB!\n";
 
-    if (is_array_equal(arr1, arr2))
+    if (is_array_equal(arr1, lenA, arr2, lenB))
         cout << "arr1 equal to arr2!\n";
     else
         cout << "arr1 not equal to arr2!\n";
 
-    if (is_array_equal(arr3, arr4))
+    lenA = sizeof(arr3) / sizeof(arr3[0]);
+    lenB = sizeof(arr4) / sizeof(arr4[0]);
+    if (is_array_equal(arr3, lenA, arr4, lenB))
         cout << "arr3 equal to arr4!\n";
     else
         cout << "arr3 not equal to arr4!\n";        
@@ -66,39 +71,24 @@ int main(void)
     return 0;
 }
 
-bool is_array_equal(const int arrA[], const int arrB[])
+bool is_array_equal(const int arrA[], size_t n1, const int arrB[], size_t n2)
 {
     bool isEqual {false};
-    /*const int *pA = arrA;
-    const int *pB = arrB;
-    int lenA = sizeof(pA) / sizeof(pA[0]);
-    int lenB = sizeof(pB) / sizeof(pB[0]);
-    */
-    int lenA = sizeof(arrA) / sizeof(arrA[0]);
-    int lenB = sizeof(arrB) / sizeof(arrB[0]);
-    
-    if (lenA == lenB)
+   
+    if (n1 == n2)
     {
         //for (size_t i = 0, idx = 0; i < sizeof(arrA) / sizeof(arrA[0]); i++, idx++)
-        for (size_t i = 0, idx = 0; i < lenA; i++, idx++)
+        for (size_t i = 0, idx = 0; i < n1; i++, idx++)
         {
-            if (arrA[i] == arrB[i])
-                continue;
-            else
+            if (arrA[i] != arrB[i])
             {
                 isEqual = false;
                 return isEqual;
-                //break;
-            };
+            }    
         }
         isEqual = true;
-        //return isEqual;
-    }
-    else
-    {
-        isEqual = false;
         return isEqual;
     }
-    
+        
     return isEqual;
 }
