@@ -1,4 +1,4 @@
-//part1:C04:4.1:ex4.18.cpp
+//part1:C04:4.1:ex4.18.cpp -- asssign value to array.
 #include <iostream>
 
 int main(void)
