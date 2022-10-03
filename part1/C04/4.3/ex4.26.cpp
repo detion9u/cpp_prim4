@@ -4,7 +4,7 @@
 #include <string>
 #include <cstring>
 using namespace std;
-const int BUFSIZE = 30;
+const size_t BUFSIZE {30};
 
 void mystring_ctr(std::string strA, char* chararr);
 //char* mystring_ctr(std::string strA);
@@ -15,13 +15,13 @@ int main(void)
     char *ptr = new char[BUFSIZE];
     cout << "Enter some characters:\n";
     cin >> str;
-    //mystring_ctr(str, strC);
-    //ptr = mystring_ctr(str);
-    //strncpy(strC, ptr, strlen(ptr));
     mystring_ctr(str, strC);
-    //strC[strlen(strC)+1] = '\0';
+    mystring_ctr(str, ptr);
+    
     cout << "str: " << str << endl;
-    cout << "strC: " << strC << endl;
+    cout << "ptr: " << ptr << endl;
+    delete [] ptr;
+
     cout << "Bye\n";
 
     return 0;
@@ -30,12 +30,15 @@ int main(void)
 //char *mystring_ctr(std::string strA)
 void mystring_ctr(std::string strA, char* chararr)
 {
-    char mychar[BUFSIZE];
+    //char mychar[BUFSIZE];
     for (size_t i = 0; i < strA.length(); i++)
     {
-        mychar[i] = strA.at(i);
+        //mychar[i] = strA.at(i);
+        chararr[i] = strA.at(i);
     }
-    mychar[strlen(mychar)+1] = '\0';
-    strncpy(chararr, mychar, sizeof(mychar));
+    //chararr[strlen(chararr)] = '\0';
+    chararr[strA.length()] = '\0';
+    //mychar[strlen(mychar)+1] = '\0';
+    //strncpy(chararr, mychar, sizeof(mychar));
     //return mychar;
 }
