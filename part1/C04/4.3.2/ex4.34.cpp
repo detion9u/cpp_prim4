@@ -1,5 +1,6 @@
 //part1:C04:4.3.2:ex4.34.cpp
 #include <cctype>
+#include <cstddef>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -13,7 +14,6 @@ int main(void)
     string str;
     vector<string> vec1;
     //char *chararr[5][ArSize];
-
     cout << "Enter some characters:\n";
     while ((cin >> str))
     {
@@ -45,7 +45,21 @@ int main(void)
         cout << *t << " ";
     }
     //char[vec1.size()][ArSize];
-    cout << "\n";
-    cout << "Bye!\n";
+    cout << "\nchar arrays to store vector elements:\n";
+    char chararr[vec1.size()][ArSize];
+
+    for (vector<string>::size_type i = 0; i != vec1.size(); i++)
+    {   // the first point to vec[0] element.
+        //*(ptr[0]+i) = vec1[i].c_str(); 
+        //chararr[i] = vec1[i].c_str();
+        strncpy(chararr[i], vec1[i].c_str(), sizeof(vec1[i].c_str()));
+    }
+
+    for (auto t : chararr)
+    {
+        cout << t << " ";
+    }
+
+    cout << "\nBye!\n";
     return 0;
 }
