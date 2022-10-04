@@ -1,3 +1,4 @@
+//par1:C05:5.2:ex5.7.cpp
 #include <iostream>
 #include <vector>
 

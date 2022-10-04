@@ -6,7 +6,7 @@ int main(void)
     using namespace std;
     int a = 9;
     int b = 8;
-    int c = 7
+    int c = 7;
     int d = 6;
 
     if ((a > b) && (b > c) && (c > d))
