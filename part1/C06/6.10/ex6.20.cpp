@@ -8,60 +8,34 @@ int main(void)
 {
     using namespace std;
     string str;
-    unsigned int count = 0;
-    unsigned int idx;
+    unsigned int idx = 0;
     vector<string> vrow;
-    vector<int> vcol;
-    vector<string>::iterator iterrow;
-    vector<string>::iterator iterrow2;
-    vector<int>::iterator itercol;
+    vector<int> vidx;
 
     cout << "Enter some characters:\n";
     cin >> str;
     vrow.push_back(str);
-    vcol.push_back(++count);
+    vidx.push_back(idx);
     while (cin >> str)
     {
         if ((str.length() == 1) && str[0] == 'q')
             break;
-
-        if (std::find(vrow.begin(), vrow.end(), str) != vrow.end())
+        vrow.push_back(str);
+        vidx.push_back(++idx);
+        
+        if (vrow[idx] == vrow[idx-1])
         {
-            iterrow = std::find(vrow.begin(), vrow.end(), str);
-            if (std::find(iterrow, vrow.end(), str) != vrow.end())
-            {
-                iterrow2 = std::find(iterrow, vrow.end(), str);
-                idx = iterrow2 - vrow.begin();
-                cout <<">> " << *iterrow2 << "-" << vrow[idx] << ":." << idx  << " " << vcol[idx] << endl;
-                if (vcol[idx] == 1)
-                {
-                    cout << "words is : " << *iterrow << endl;
-                    break;
-                }
-            }
-            idx = iterrow - vrow.begin();
-            vcol[idx] += 1;
-            /*if (*(iterrow - 1) == (*iterrow))
-            {
-                cout << "words is : " << *iterrow << endl;
-                break;
-            } */  
-            //vcol.insert(vcol.begin()+idx,++count);
-        }     
-        else
-        {
-            count = 0;
-            vrow.push_back(str);
-            vcol.push_back(++count);
+            cout << str << " : " << idx << " > " << vrow[idx] << endl; 
+            break;
         }
     }
 
     for (unsigned int i = 0; i != vrow.size(); i++)
     {   
-        cout << vrow[i] << " : " << vcol[i] << "\n";
+        cout << vrow[i] << " : " << i << "\n";
     }
 
-    cout << "Bye!\n";
+    cout << "\nBye!\n";
 
     return 0;
 }
