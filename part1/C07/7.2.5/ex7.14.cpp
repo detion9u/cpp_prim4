@@ -4,7 +4,7 @@
 #include <iterator>
 using namespace std;
 
-int sum_vector(const vector<int>);
+int sum_vector(const vector<int> &v);
 int main(void)
 {
     const int MAXSIZE = 6;
